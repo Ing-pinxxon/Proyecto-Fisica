@@ -1,0 +1,46 @@
+# Clase Lugar
+# Representa un lugar específico donde se medirá la energía solar.
+class Lugar:
+    def __init__(self, nombre, latitud, longitud):
+        """
+        Inicializa un lugar con su nombre, latitud y longitud.
+        :param nombre: Nombre del lugar (str)
+        :param latitud: Latitud geográfica del lugar (float)
+        :param longitud: Longitud geográfica del lugar (float)
+        """
+        self.nombre = nombre
+        self.latitud = latitud
+        self.longitud = longitud
+
+# Clase PanelSolar
+# Representa un panel solar con sus características técnicas.
+class PanelSolar:
+    def __init__(self, eficiencia, area):
+        """
+        Inicializa un panel solar con su eficiencia y área.
+        :param eficiencia: Eficiencia del panel solar en porcentaje (float)
+        :param area: Área del panel solar en metros cuadrados (float)
+        """
+        self.eficiencia = eficiencia
+        self.area = area
+
+# Clase PrediccionSolar
+# Calcula la cantidad de energía solar que se puede generar en un lugar.
+class PrediccionSolar:
+    def __init__(self, lugar, panel_solar, irradiancia_promedio):
+        """
+        Inicializa una predicción solar con un lugar, un panel solar y la irradiancia promedio.
+        :param lugar: Instancia de la clase Lugar
+        :param panel_solar: Instancia de la clase PanelSolar
+        :param irradiancia_promedio: Irradiancia solar promedio en kWh/m²/día (float)
+        """
+        self.lugar = lugar
+        self.panel_solar = panel_solar
+        self.irradiancia_promedio = irradiancia_promedio
+
+    def calcular_energia(self):
+        """
+        Calcula la energía solar generada en un día.
+        :return: Energía generada en kWh (float)
+        """
+        return self.panel_solar.eficiencia * self.panel_solar.area * self.irradiancia_promedio / 100
